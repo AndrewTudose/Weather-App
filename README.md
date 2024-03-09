@@ -17,7 +17,7 @@
 
 2. run composer update
 ```bash
-php composer.phar update
+composer install
 ```
 3. add necessary tables and db to work
 ```bash
