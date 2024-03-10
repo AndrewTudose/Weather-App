@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\WeatherInformation;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class WeatherInformationController extends Controller
 {
 
     public function index(Request $request)
     {
-
-        $isAdmin = $this->checkAdmin($request);
 
         $filters = [
             'minimumTemperature' => $request->input('min'),
@@ -34,26 +33,14 @@ class WeatherInformationController extends Controller
                 ->addIndexColumn()
                 ->make(true);
 
-        } 
+        }
 
         return view(
             '/Main/index',
             [
-                'isAdmin' => $isAdmin
+                'isLogged' => Auth::check()
             ]
         );
     }
 
-    private function checkAdmin(Request $request) : bool
-    {
-        $sessionDatas = $request->session()->all();
-
-        foreach($sessionDatas as $sessionDataKey =>$sessionDataValue) {
-            if(preg_match('/login_admin/',$sessionDataKey)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

@@ -29,7 +29,7 @@
                 <div class="text-xl text-blue-600 dark:text-blue-300 font-bold text-center">
                     <a href="{{ route('weather.index') }}">Main</a>
                 </div>
-                @if ($isAdmin)
+                @if ($isLogged)
                     <div class="flex items-center gap-4">
                         <div>
                             <a href="{{ route('filament.admin.pages.dashboard') }}">Dashboard</a>
