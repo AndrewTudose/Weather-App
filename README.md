@@ -15,7 +15,7 @@
 
 1. download locally source code
 
-2. run composer update
+2. run composer install
 ```bash
 composer install
 ```
